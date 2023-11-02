@@ -1,13 +1,60 @@
 package sistemaescolar;
 
+import javax.swing.table.DefaultTableModel;
+
 public class Exibir extends javax.swing.JFrame {
 
     /**
      * Creates new form Exibir
      */
+    
+    private Home home;
+    private GuardaAluno ga;
+    private Alunos alunos;
+    
     public Exibir() {
         initComponents();
     }
+    
+    public Exibir(Home home) {
+        this.home = home;
+        ga=home.getGa();
+        initComponents();
+        DefaultTableModel dt = new DefaultTableModel();
+        dt = (DefaultTableModel)tabela.getModel();
+        dt.setNumRows(0);
+        
+        /*
+        String[] nome = new String[2];
+        String[] sala = new String[2];
+        float[] nota1 = new float[2];
+        float[] nota2 = new float[2];
+        float[] nota3 = new float[2];
+        float[] nota4 = new float[2];
+        */
+        
+        float soma, media;
+        String resultado;
+        
+        soma = ga.getNota1() + ga.getNota2() + ga.getNota3() + ga.getNota4();
+        media = soma/4;
+        
+        if(media >= 6){
+            resultado = "       Aprovado";
+        }else{
+            resultado = "       Reprovado";
+        }
+        
+        Object[] linha = {ga.getNome(), ga.getSala(),ga.getNota1(), ga.getNota2(), ga.getNota3(), ga.getNota4(), resultado};
+            dt.addRow(linha);
+    }
+    
+    /*
+    public Exibir(Alunos alunos) {
+        this.alunos = alunos;
+        initComponents();
+    }
+    */
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -22,7 +69,7 @@ public class Exibir extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabela = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -43,18 +90,15 @@ public class Exibir extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 200, 50));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 97, 1000, 10));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Alunos", "Sala", "Nota 1", "Nota 2", "Nota 3", "Nota 4", "Resultado"
+                "Aluno", "Sala", "Nota 1", "Nota 2", " Nota 3", " Nota 4", "Resultado"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabela);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 790, 330));
 
@@ -76,7 +120,9 @@ public class Exibir extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        //GuardaAluno aluno = new GuardaAluno();
+        
+//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
@@ -112,6 +158,6 @@ public class Exibir extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabela;
     // End of variables declaration//GEN-END:variables
 }

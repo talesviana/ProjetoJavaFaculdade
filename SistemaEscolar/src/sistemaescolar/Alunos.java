@@ -2,7 +2,14 @@ package sistemaescolar;
 
 public class Alunos extends javax.swing.JFrame {
 
+    private Home home;
+    
     public Alunos() {
+        initComponents();
+    }
+    
+    public Alunos(Home home) {
+        this.home = home;
         initComponents();
     }
 
@@ -13,13 +20,13 @@ public class Alunos extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        nome = new javax.swing.JTextField();
+        sala = new javax.swing.JTextField();
+        nota1 = new javax.swing.JTextField();
+        nota2 = new javax.swing.JTextField();
+        nota3 = new javax.swing.JTextField();
+        nota4 = new javax.swing.JTextField();
+        botaoCalcular = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -39,46 +46,51 @@ public class Alunos extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 84, -1, 156));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 255, 1020, 10));
 
-        jTextField2.setText("Nome");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        nome.setText("Nome");
+        nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                nomeActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 293, 154, -1));
+        getContentPane().add(nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 293, 154, -1));
 
-        jTextField1.setText("Sala");
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 333, 154, -1));
+        sala.setText("Sala");
+        getContentPane().add(sala, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 333, 154, -1));
 
-        jTextField3.setText("Nota 1");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        nota1.setText("Nota 1");
+        nota1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                nota1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 373, 154, -1));
+        getContentPane().add(nota1, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 373, 154, -1));
 
-        jTextField4.setText("Nota 2");
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 413, 154, -1));
+        nota2.setText("Nota 2");
+        getContentPane().add(nota2, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 413, 154, -1));
 
-        jTextField5.setText("Nota 3");
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        nota3.setText("Nota 3");
+        nota3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                nota3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 453, 154, -1));
+        getContentPane().add(nota3, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 453, 154, -1));
 
-        jTextField6.setText("Nota 4");
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        nota4.setText("Nota 4");
+        nota4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                nota4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 493, 154, -1));
+        getContentPane().add(nota4, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 493, 154, -1));
 
-        jButton2.setText("Enviar");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 568, 97, -1));
+        botaoCalcular.setText("Enviar");
+        botaoCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoCalcularActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botaoCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 568, 97, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -94,26 +106,57 @@ public class Alunos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Home home = new Home(); 
+        //Home home = new Home(); 
         home.show(); 
         dispose(); 
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    
+    public void calculaNota(){
+        
+    }
+    
+    private void nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_nomeActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void nota1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nota1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_nota1ActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void nota3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nota3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_nota3ActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void nota4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nota4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_nota4ActionPerformed
+
+    private void botaoCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCalcularActionPerformed
+        String nomeprograma = nome.getText();
+        String salaprograma = sala.getText();
+        float nota1programa = Float.parseFloat(nota1.getText());
+        float nota2programa = Float.parseFloat(nota2.getText());
+        float nota3programa = Float.parseFloat(nota3.getText());
+        float nota4programa = Float.parseFloat(nota4.getText());
+        
+        GuardaAluno aluno = new GuardaAluno();
+        aluno.setNome(nomeprograma);
+        aluno.setSala(salaprograma);
+        aluno.setNota1(nota1programa);
+        aluno.setNota2(nota2programa);
+        aluno.setNota3(nota3programa);
+        aluno.setNota4(nota4programa);
+        
+        home.setGa(aluno);
+        
+        home.setVisible(true); 
+        this.dispose(); 
+        
+        
+        //JOPtionPane jpane = new JOptionPane();
+        //JOPtionPane.showMessageDialog();
+        
+    }//GEN-LAST:event_botaoCalcularActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -138,7 +181,7 @@ public class Alunos extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Alunos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -148,17 +191,17 @@ public class Alunos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoCalcular;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField nome;
+    private javax.swing.JTextField nota1;
+    private javax.swing.JTextField nota2;
+    private javax.swing.JTextField nota3;
+    private javax.swing.JTextField nota4;
+    private javax.swing.JTextField sala;
     // End of variables declaration//GEN-END:variables
 }

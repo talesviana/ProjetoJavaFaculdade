@@ -2,6 +2,16 @@ package sistemaescolar;
 
 public class Home extends javax.swing.JFrame {
 
+    private GuardaAluno ga;
+
+    public void setGa(GuardaAluno ga) {
+        this.ga = ga;
+    }
+
+    public GuardaAluno getGa() {
+        return ga;
+    }
+    
     public Home() {
         initComponents();
     }
@@ -16,41 +26,33 @@ public class Home extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        inserir = new javax.swing.JButton();
+        mostrar = new javax.swing.JButton();
+        sair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/professorensinandopequeno.jpg"))); // NOI18N
 
-        jButton1.setText("Inserir aluno");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        inserir.setText("Inserir aluno");
+        inserir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                inserirActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Inserir nota");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        mostrar.setText("Mostrar alunos");
+        mostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                mostrarActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Mostrar alunos");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        sair.setText("Sair");
+        sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setText("Sair");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                sairActionPerformed(evt);
             }
         });
 
@@ -59,27 +61,25 @@ public class Home extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(124, 124, 124)
+                .addGap(99, 99, 99)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(inserir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(mostrar, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                    .addComponent(sair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 157, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addComponent(jButton1)
-                .addGap(46, 46, 46)
-                .addComponent(jButton2)
+                .addGap(174, 174, 174)
+                .addComponent(inserir)
+                .addGap(54, 54, 54)
+                .addComponent(mostrar)
                 .addGap(58, 58, 58)
-                .addComponent(jButton3)
-                .addGap(58, 58, 58)
-                .addComponent(jButton4)
+                .addComponent(sair)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -87,28 +87,29 @@ public class Home extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Alunos alunos = new Alunos(); 
+    private void inserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inserirActionPerformed
+        Alunos alunos = new Alunos(this); 
         alunos.show(); 
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_inserirActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Nota nota = new Nota();
-        nota.show(); 
-        dispose(); 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void mostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarActionPerformed
+        
+        if(ga == null){
+            System.out.println("Nao ha alunos.");
+        }else{
+            Exibir exibir = new Exibir(this);
+            exibir.show();
+            dispose();
+        }
+        //Exibir exibir = new Exibir(ga);
+        
+    }//GEN-LAST:event_mostrarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Exibir exibir = new Exibir();
-        exibir.show();
-        dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
         dispose();
         return; 
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_sairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,10 +147,9 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton inserir;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton mostrar;
+    private javax.swing.JButton sair;
     // End of variables declaration//GEN-END:variables
 }
