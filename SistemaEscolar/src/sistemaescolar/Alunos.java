@@ -1,5 +1,7 @@
 package sistemaescolar;
 
+import javax.swing.JOptionPane;
+
 public class Alunos extends javax.swing.JFrame {
 
     private Home home;
@@ -153,8 +155,8 @@ public class Alunos extends javax.swing.JFrame {
         this.dispose(); 
         
         
-        //JOPtionPane jpane = new JOptionPane();
-        //JOPtionPane.showMessageDialog();
+      
+        JOptionPane.showMessageDialog(null, "Aluno inserido com sucesso");
         
     }//GEN-LAST:event_botaoCalcularActionPerformed
 
