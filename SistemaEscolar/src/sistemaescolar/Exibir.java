@@ -1,6 +1,8 @@
 package sistemaescolar;
 
 import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Exibir extends javax.swing.JFrame {
 
@@ -10,7 +12,6 @@ public class Exibir extends javax.swing.JFrame {
     
     private Home home;
     private GuardaAluno ga;
-    private Alunos alunos;
     
     public Exibir() {
         initComponents();
@@ -18,26 +19,25 @@ public class Exibir extends javax.swing.JFrame {
     
     public Exibir(Home home) {
         this.home = home;
-        ga=home.getGa();
+        ga = home.getGa();
         initComponents();
+        
         DefaultTableModel dt = new DefaultTableModel();
         dt = (DefaultTableModel)tabela.getModel();
-        dt.setNumRows(0);
         
-        /*
-        String[] nome = new String[2];
-        String[] sala = new String[2];
-        float[] nota1 = new float[2];
-        float[] nota2 = new float[2];
-        float[] nota3 = new float[2];
-        float[] nota4 = new float[2];
-        */
         
+        
+        String nome = ga.getNome();
+        String sala = ga.getSala();
+        float nota1 = ga.getNota1();
+        float nota2 = ga.getNota2();
+        float nota3 = ga.getNota3();
+        float nota4 = ga.getNota4();
         float soma, media;
         String resultado;
         
-        soma = ga.getNota1() + ga.getNota2() + ga.getNota3() + ga.getNota4();
-        media = soma/4;
+        soma = nota1 + nota2 + nota3 + nota4;
+        media = (soma/4);
         
         if(media >= 6){
             resultado = "       Aprovado";
@@ -45,8 +45,20 @@ public class Exibir extends javax.swing.JFrame {
             resultado = "       Reprovado";
         }
         
-        Object[] linha = {ga.getNome(), ga.getSala(),ga.getNota1(), ga.getNota2(), ga.getNota3(), ga.getNota4(), resultado};
-            dt.addRow(linha);
+        Object[] linha = {nome, sala, nota1, nota2, nota3, nota4, resultado};
+        
+        ArrayList<Object[]> linhastab = new ArrayList<Object[]>();
+        
+        linhastab.add(linha);
+        //linhastab.addAll(linha);
+        
+        for(int i=0; i < linhastab.size(); i++){
+            System.out.println(Arrays.toString(linhastab.get(i)));
+        }
+        
+        for(int i=0; i < linhastab.size(); i++){
+            dt.addRow(linhastab.get(i));
+        }
     }
     
     /*

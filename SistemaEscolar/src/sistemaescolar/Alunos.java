@@ -112,11 +112,7 @@ public class Alunos extends javax.swing.JFrame {
         home.show(); 
         dispose(); 
     }//GEN-LAST:event_jButton1ActionPerformed
-    
-    public void calculaNota(){
-        
-    }
-    
+
     private void nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeActionPerformed
