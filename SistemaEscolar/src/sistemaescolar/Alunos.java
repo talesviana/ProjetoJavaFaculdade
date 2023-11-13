@@ -22,11 +22,17 @@ public class Alunos extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        TextoNome = new javax.swing.JLabel();
         nome = new javax.swing.JTextField();
+        TextoSala = new javax.swing.JLabel();
         sala = new javax.swing.JTextField();
+        TextoNota1 = new javax.swing.JLabel();
         nota1 = new javax.swing.JTextField();
+        TextoNota2 = new javax.swing.JLabel();
         nota2 = new javax.swing.JTextField();
+        TextoNota3 = new javax.swing.JLabel();
         nota3 = new javax.swing.JTextField();
+        TextoNota4 = new javax.swing.JLabel();
         nota4 = new javax.swing.JTextField();
         botaoCalcular = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -48,29 +54,56 @@ public class Alunos extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 84, -1, 156));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 255, 1020, 10));
 
-        nome.setText("Nome");
+        TextoNome.setBackground(new java.awt.Color(255, 255, 255));
+        TextoNome.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
+        TextoNome.setForeground(new java.awt.Color(255, 255, 255));
+        TextoNome.setText("Nome do Aluno: ");
+        getContentPane().add(TextoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, -1, -1));
+
         nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomeActionPerformed(evt);
             }
         });
-        getContentPane().add(nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 293, 154, -1));
+        getContentPane().add(nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 290, 154, -1));
 
-        sala.setText("Sala");
-        getContentPane().add(sala, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 333, 154, -1));
+        TextoSala.setBackground(new java.awt.Color(255, 255, 255));
+        TextoSala.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
+        TextoSala.setForeground(new java.awt.Color(255, 255, 255));
+        TextoSala.setText("Sala do Aluno:");
+        getContentPane().add(TextoSala, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, -1, -1));
+        getContentPane().add(sala, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, 154, -1));
 
-        nota1.setText("Nota 1");
+        TextoNota1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
+        TextoNota1.setForeground(new java.awt.Color(255, 255, 255));
+        TextoNota1.setText("1º Nota:");
+        getContentPane().add(TextoNota1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, -1, -1));
+
         nota1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nota1ActionPerformed(evt);
             }
         });
-        getContentPane().add(nota1, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 373, 154, -1));
+        getContentPane().add(nota1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 370, 154, -1));
 
-        nota2.setText("Nota 2");
+        TextoNota2.setBackground(new java.awt.Color(255, 255, 255));
+        TextoNota2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
+        TextoNota2.setForeground(new java.awt.Color(255, 255, 255));
+        TextoNota2.setText("2º Nota:");
+        getContentPane().add(TextoNota2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 410, -1, -1));
+
+        nota2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nota2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(nota2, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 413, 154, -1));
 
-        nota3.setText("Nota 3");
+        TextoNota3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
+        TextoNota3.setForeground(new java.awt.Color(255, 255, 255));
+        TextoNota3.setText("3º Nota:");
+        getContentPane().add(TextoNota3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, -1, -1));
+
         nota3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nota3ActionPerformed(evt);
@@ -78,7 +111,11 @@ public class Alunos extends javax.swing.JFrame {
         });
         getContentPane().add(nota3, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 453, 154, -1));
 
-        nota4.setText("Nota 4");
+        TextoNota4.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
+        TextoNota4.setForeground(new java.awt.Color(255, 255, 255));
+        TextoNota4.setText("4º Nota:");
+        getContentPane().add(TextoNota4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 490, -1, -1));
+
         nota4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nota4ActionPerformed(evt);
@@ -156,6 +193,10 @@ public class Alunos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_botaoCalcularActionPerformed
 
+    private void nota2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nota2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nota2ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -189,6 +230,12 @@ public class Alunos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel TextoNome;
+    private javax.swing.JLabel TextoNota1;
+    private javax.swing.JLabel TextoNota2;
+    private javax.swing.JLabel TextoNota3;
+    private javax.swing.JLabel TextoNota4;
+    private javax.swing.JLabel TextoSala;
     private javax.swing.JButton botaoCalcular;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
