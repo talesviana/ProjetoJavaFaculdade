@@ -11,7 +11,7 @@ package sistemaescolar;
 
 public class GuardaAluno {
     String nome, sala;
-    float nota1, nota2, nota3, nota4;
+    float nota1, nota2, nota3, nota4, soma, media;
 
     public String getNome() {
         return nome;
@@ -59,6 +59,18 @@ public class GuardaAluno {
 
     public float getNota4() {
         return nota4;
+    }
+    
+    public String getResultado(){
+        
+        soma = nota1 + nota2 + nota3 + nota4;
+        media = (soma/4);
+        
+        if(media >= 6){
+            return "Aprovado";
+        }else{
+            return "Reprovado";
+        }
     }
     
 }

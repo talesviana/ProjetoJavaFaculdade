@@ -1,15 +1,22 @@
 package sistemaescolar;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 public class Home extends javax.swing.JFrame {
 
     private GuardaAluno ga;
-
+    private ArrayList<Object[]> alunos = new ArrayList<Object[]>();
+    
     public void setGa(GuardaAluno ga) {
         this.ga = ga;
+        
+        Object[] linha = {ga.getNome(), ga.getSala(), ga.getNota1(), ga.getNota2(), ga.getNota3(), ga.getNota4(), ga.getResultado()};
+        alunos.add(linha);
     }
 
-    public GuardaAluno getGa() {
-        return ga;
+    public ArrayList getArray() {
+        return alunos;
     }
     
     public Home() {
@@ -96,7 +103,7 @@ public class Home extends javax.swing.JFrame {
     private void mostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarActionPerformed
         
         if(ga == null){
-            System.out.println("Nao ha alunos.");
+            JOptionPane.showMessageDialog(null, "Nenhum Aluno inserido");
         }else{
             Exibir exibir = new Exibir(this);
             exibir.show();

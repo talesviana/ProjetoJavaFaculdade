@@ -11,7 +11,7 @@ public class Exibir extends javax.swing.JFrame {
      */
     
     private Home home;
-    private GuardaAluno ga;
+    private ArrayList<Object[]> alunos = new ArrayList<Object[]>();
     
     public Exibir() {
         initComponents();
@@ -19,54 +19,19 @@ public class Exibir extends javax.swing.JFrame {
     
     public Exibir(Home home) {
         this.home = home;
-        ga = home.getGa();
+        alunos = home.getArray();
         initComponents();
         
         DefaultTableModel dt = new DefaultTableModel();
         dt = (DefaultTableModel)tabela.getModel();
         
+        //ArrayList<Object[]> linhastab = new ArrayList<Object[]>();
         
-        
-        String nome = ga.getNome();
-        String sala = ga.getSala();
-        float nota1 = ga.getNota1();
-        float nota2 = ga.getNota2();
-        float nota3 = ga.getNota3();
-        float nota4 = ga.getNota4();
-        float soma, media;
-        String resultado;
-        
-        soma = nota1 + nota2 + nota3 + nota4;
-        media = (soma/4);
-        
-        if(media >= 6){
-            resultado = "       Aprovado";
-        }else{
-            resultado = "       Reprovado";
-        }
-        
-        Object[] linha = {nome, sala, nota1, nota2, nota3, nota4, resultado};
-        
-        ArrayList<Object[]> linhastab = new ArrayList<Object[]>();
-        
-        linhastab.add(linha);
-        //linhastab.addAll(linha);
-        
-        for(int i=0; i < linhastab.size(); i++){
-            System.out.println(Arrays.toString(linhastab.get(i)));
-        }
-        
-        for(int i=0; i < linhastab.size(); i++){
-            dt.addRow(linhastab.get(i));
+        for(int i=0; i < alunos.size(); i++){
+            System.out.println(Arrays.toString(alunos.get(i)));
+            dt.addRow(alunos.get(i));
         }
     }
-    
-    /*
-    public Exibir(Alunos alunos) {
-        this.alunos = alunos;
-        initComponents();
-    }
-    */
 
     /**
      * This method is called from within the constructor to initialize the form.
