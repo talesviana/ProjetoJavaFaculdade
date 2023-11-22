@@ -11,10 +11,17 @@ public class Exibir extends javax.swing.JFrame {
      */
     
     private Home home;
+    private DefaultTableModel dt = new DefaultTableModel();
     private ArrayList<Object[]> alunos = new ArrayList<Object[]>();
     
     public Exibir() {
         initComponents();
+    }
+    
+    public void percorrerArray(){
+        for(int i=0; i < alunos.size(); i++){
+            dt.addRow(alunos.get(i));
+        }
     }
     
     public Exibir(Home home) {
@@ -22,17 +29,33 @@ public class Exibir extends javax.swing.JFrame {
         alunos = home.getArray();
         initComponents();
         
-        DefaultTableModel dt = new DefaultTableModel();
+        filtro.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
+                "Filtrar", "Aprovados", "Reprovados"}));
+        
         dt = (DefaultTableModel)tabela.getModel();
-        
-        //ArrayList<Object[]> linhastab = new ArrayList<Object[]>();
-        
+        percorrerArray();
+    }
+    
+    public void forAprovados(){
         for(int i=0; i < alunos.size(); i++){
-            System.out.println(Arrays.toString(alunos.get(i)));
-            dt.addRow(alunos.get(i));
+            Object[] aluno = alunos.get(i);
+
+            if(aluno[6].equals("Aprovado")){
+                dt.addRow(alunos.get(i));
+            }
+        } 
+    }
+    
+    public void forReprovados(){
+        for(int i=0; i < alunos.size(); i++){
+            Object[] aluno = alunos.get(i);
+
+            if(aluno[6].equals("Reprovado")){
+                dt.addRow(alunos.get(i));
+            }
         }
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,6 +65,7 @@ public class Exibir extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        filtro = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -51,6 +75,20 @@ public class Exibir extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        filtro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        filtro.setToolTipText("FIltro");
+        filtro.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                filtroComponentAdded(evt);
+            }
+        });
+        filtro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filtroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, -1, -1));
 
         jButton1.setText("← Voltar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -80,6 +118,7 @@ public class Exibir extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 790, 330));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundimagetabela.jpeg"))); // NOI18N
+        jLabel1.setText("Filtro");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 650));
 
         pack();
@@ -91,6 +130,31 @@ public class Exibir extends javax.swing.JFrame {
         home.setVisible(true);
         dispose(); 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void filtroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtroActionPerformed
+        String item = (String) filtro.getSelectedItem();
+        
+        //Enquanto existir uma linha
+        while (dt.getRowCount() > 0) {
+            dt.removeRow(0);
+        }
+        
+        switch (item) {
+            case "Aprovados":
+                forAprovados();
+                break;
+            case "Reprovados":
+                forReprovados();
+                break;
+            case "Filtrar":
+                percorrerArray();
+                break;
+        }
+    }//GEN-LAST:event_filtroActionPerformed
+
+    private void filtroComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_filtroComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filtroComponentAdded
 
     /**
      * @param args the command line arguments
@@ -130,6 +194,7 @@ public class Exibir extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> filtro;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
