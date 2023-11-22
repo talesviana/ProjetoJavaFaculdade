@@ -18,7 +18,7 @@ public class Exibir extends javax.swing.JFrame {
         initComponents();
     }
     
-    public void percorrerArray(){
+    public void percorreArray(){
         for(int i=0; i < alunos.size(); i++){
             dt.addRow(alunos.get(i));
         }
@@ -33,7 +33,7 @@ public class Exibir extends javax.swing.JFrame {
                 "Filtrar", "Sala", "Aprovados", "Reprovados"}));
         
         dt = (DefaultTableModel)tabela.getModel();
-        percorrerArray();
+        percorreArray();
     }
     
     public void forFiltro(String item){
@@ -60,6 +60,7 @@ public class Exibir extends javax.swing.JFrame {
         
         if(cont == 0){
             JOptionPane.showMessageDialog(rootPane, "Sala não adicionada.");
+            percorreArray();
         }
     }
     
@@ -181,11 +182,10 @@ public class Exibir extends javax.swing.JFrame {
             case "Aprovados" -> forFiltro(item);
             case "Reprovados" -> forFiltro(item);
             case "Sala" -> {
-                percorrerArray();
                 String sala = JOptionPane.showInputDialog("Insira a sala: ");
                 forSala(sala);
             }
-            case "Filtrar" -> percorrerArray();
+            case "Filtrar" -> percorreArray();
         }
     }//GEN-LAST:event_filtroActionPerformed
 
