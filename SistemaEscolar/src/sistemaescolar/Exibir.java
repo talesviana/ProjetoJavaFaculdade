@@ -60,8 +60,29 @@ public class Exibir extends javax.swing.JFrame {
         
         if(cont == 0){
             JOptionPane.showMessageDialog(rootPane, "Sala não adicionada.");
-            percorrerArray();
         }
+    }
+    
+    public void removeAluno(String nome){
+        for(int i=0; i < alunos.size(); i++){
+            Object[] aluno = alunos.get(i);
+
+            if(aluno[0].equals(nome)){
+                dt.removeRow(i);
+                alunos.remove(i);
+            }
+        }
+    }
+    
+    public Boolean existeAluno(String nome){
+        for(int i=0; i < alunos.size(); i++){
+            Object[] aluno = alunos.get(i);
+
+            if(aluno[0].equals(nome)){
+                return true;
+            }
+        }
+        return false;
     }
     
     /**
@@ -74,6 +95,7 @@ public class Exibir extends javax.swing.JFrame {
     private void initComponents() {
 
         filtro = new javax.swing.JComboBox<>();
+        btnRemover = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -97,6 +119,14 @@ public class Exibir extends javax.swing.JFrame {
             }
         });
         getContentPane().add(filtro, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, -1, -1));
+
+        btnRemover.setText("Remover");
+        btnRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoverActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 110, -1, -1));
 
         jButton1.setText("← Voltar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -151,6 +181,7 @@ public class Exibir extends javax.swing.JFrame {
             case "Aprovados" -> forFiltro(item);
             case "Reprovados" -> forFiltro(item);
             case "Sala" -> {
+                percorrerArray();
                 String sala = JOptionPane.showInputDialog("Insira a sala: ");
                 forSala(sala);
             }
@@ -161,6 +192,22 @@ public class Exibir extends javax.swing.JFrame {
     private void filtroComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_filtroComponentAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_filtroComponentAdded
+
+    private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
+        String nomeApagar = JOptionPane.showInputDialog(rootPane, "Nome que deseja apagar: ");
+        Boolean resul = existeAluno(nomeApagar);
+        
+        
+        if(resul == true){
+            int decisao = JOptionPane.showConfirmDialog(rootPane, "Deseja mesmo apagar o aluno " + nomeApagar + "?");
+
+            if(decisao == 0){
+                removeAluno(nomeApagar);
+            }
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Nome não cadastrado.");
+        }
+    }//GEN-LAST:event_btnRemoverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,6 +247,7 @@ public class Exibir extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRemover;
     private javax.swing.JComboBox<String> filtro;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
