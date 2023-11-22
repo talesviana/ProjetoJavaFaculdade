@@ -1,8 +1,8 @@
 package sistemaescolar;
 
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Exibir extends javax.swing.JFrame {
 
@@ -30,29 +30,37 @@ public class Exibir extends javax.swing.JFrame {
         initComponents();
         
         filtro.setModel(new javax.swing.DefaultComboBoxModel(new String[] {
-                "Filtrar", "Aprovados", "Reprovados"}));
+                "Filtrar", "Sala", "Aprovados", "Reprovados"}));
         
         dt = (DefaultTableModel)tabela.getModel();
         percorrerArray();
     }
     
-    public void forAprovados(){
+    public void forFiltro(String item){
         for(int i=0; i < alunos.size(); i++){
             Object[] aluno = alunos.get(i);
-
-            if(aluno[6].equals("Aprovado")){
-                dt.addRow(alunos.get(i));
+            
+            if(aluno[6].equals(item.substring(0, item.length()-1))){
+                dt.addRow(aluno);
             }
-        } 
+        }
     }
     
-    public void forReprovados(){
+    public void forSala(String sala){
+        int cont=0;
+        
         for(int i=0; i < alunos.size(); i++){
             Object[] aluno = alunos.get(i);
-
-            if(aluno[6].equals("Reprovado")){
-                dt.addRow(alunos.get(i));
+            
+            if(aluno[1].equals(sala)){
+                dt.addRow(aluno);
+                cont++;
             }
+        }
+        
+        if(cont == 0){
+            JOptionPane.showMessageDialog(rootPane, "Sala não adicionada.");
+            percorrerArray();
         }
     }
     
@@ -140,15 +148,13 @@ public class Exibir extends javax.swing.JFrame {
         }
         
         switch (item) {
-            case "Aprovados":
-                forAprovados();
-                break;
-            case "Reprovados":
-                forReprovados();
-                break;
-            case "Filtrar":
-                percorrerArray();
-                break;
+            case "Aprovados" -> forFiltro(item);
+            case "Reprovados" -> forFiltro(item);
+            case "Sala" -> {
+                String sala = JOptionPane.showInputDialog("Insira a sala: ");
+                forSala(sala);
+            }
+            case "Filtrar" -> percorrerArray();
         }
     }//GEN-LAST:event_filtroActionPerformed
 
