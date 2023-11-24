@@ -1,6 +1,7 @@
 package sistemaescolar;
 
 import javax.swing.JOptionPane;
+import org.apache.commons.lang3.math.NumberUtils;
 
 public class Alunos extends javax.swing.JFrame {
 
@@ -169,29 +170,42 @@ public class Alunos extends javax.swing.JFrame {
     private void botaoCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCalcularActionPerformed
         String nomeprograma = nome.getText();
         String salaprograma = sala.getText();
+        String nota1s = nota1.getText();
+        String nota2s = nota2.getText();
+        String nota3s = nota3.getText();
+        String nota4s = nota4.getText();
         
-        float nota1programa = Float.parseFloat(nota1.getText());
-        float nota2programa = Float.parseFloat(nota2.getText());
-        float nota3programa = Float.parseFloat(nota3.getText());
-        float nota4programa = Float.parseFloat(nota4.getText());
         GuardaAluno aluno = new GuardaAluno();
         
-        if(nota1.equals("")|| nota2.equals("") || nota3.equals("") || nota4.equals("") || nome.equals("") || sala.equals("")){
+        if(nomeprograma.trim().isEmpty() || salaprograma.trim().isEmpty() || nota1s.trim().isEmpty() || nota2s.trim().isEmpty() || nota3s.trim().isEmpty() || nota4s.trim().isEmpty()){
             JOptionPane.showMessageDialog(rootPane, "Por favor, preencha todos os campos.");
-        }else if((nota1programa > 0 && nota1programa < 10) && (nota2programa > 0 && nota2programa < 10) && (nota3programa > 0 && nota3programa < 10) && (nota4programa > 0 && nota4programa < 10)){
-            aluno.setNome(nomeprograma);
-            aluno.setSala(salaprograma);
-            aluno.setNota1(nota1programa);
-            aluno.setNota2(nota2programa);
-            aluno.setNota3(nota3programa);
-            aluno.setNota4(nota4programa);
+        }else{
+            
+            Float nota1programa = Float.parseFloat(nota1s);
+            Float nota2programa = Float.parseFloat(nota2s);
+            Float nota3programa = Float.parseFloat(nota3s);
+            Float nota4programa = Float.parseFloat(nota4s);
+            
+            if(nota1programa.isNaN() || nota2programa.isNaN() || nota3programa.isNaN() || nota4programa.isNaN()){
+                JOptionPane.showMessageDialog(rootPane, "Por favor, insira um número.");
+            }else if((nota1programa >= 0 && nota1programa <= 10) && (nota2programa >= 0 && nota2programa <= 10) && (nota3programa >= 0 && nota3programa <= 10) && (nota4programa >= 0 && nota4programa <= 10)){
+                
+                aluno.setNome(nomeprograma);
+                aluno.setSala(salaprograma);
+                aluno.setNota1(nota1programa);
+                aluno.setNota2(nota2programa);
+                aluno.setNota3(nota3programa);
+                aluno.setNota4(nota4programa);
 
-            home.setGa(aluno);
-            home.setVisible(true);
-            this.dispose(); 
-            JOptionPane.showMessageDialog(null, "Aluno inserido com sucesso");
-        }else
-            JOptionPane.showMessageDialog(null,"Insira notas entre 0 e 10");
+                home.setGa(aluno);
+                home.setVisible(true);
+                this.dispose(); 
+                
+                JOptionPane.showMessageDialog(null, "Aluno inserido com sucesso");
+                
+                }else
+                    JOptionPane.showMessageDialog(null,"Insira notas entre 0 e 10");
+            }
     }//GEN-LAST:event_botaoCalcularActionPerformed
 
     private void nota2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nota2ActionPerformed
