@@ -12,7 +12,7 @@ public class Exibir extends javax.swing.JFrame {
     
     private Home home;
     private DefaultTableModel dt = new DefaultTableModel();
-    private ArrayList<Object[]> alunos = new ArrayList<Object[]>();
+    private ArrayList<Object[]> alunos = new ArrayList<>();
     
     public Exibir() {
         initComponents();

@@ -1,14 +1,12 @@
 package sistemaescolar;
 
 import java.util.ArrayList;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Home extends javax.swing.JFrame {
 
     private GuardaAluno ga;
-    private ArrayList<Object[]> alunos = new ArrayList<Object[]>();
+    private ArrayList<Object[]> alunos = new ArrayList<>();
     
     public void setGa(GuardaAluno ga) {
         this.ga = ga;

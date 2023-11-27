@@ -1,7 +1,6 @@
 package sistemaescolar;
 
 import javax.swing.JOptionPane;
-import org.apache.commons.lang3.math.NumberUtils;
 
 public class Alunos extends javax.swing.JFrame {
 
@@ -14,6 +13,30 @@ public class Alunos extends javax.swing.JFrame {
     public Alunos(Home home) {
         this.home = home;
         initComponents();
+    }
+    
+    public boolean validarVazio(String dado){
+        return dado.trim().isEmpty();
+    }
+    
+    public boolean validarNumeros(String nota){
+        String[] letras = {"a", "b", "c", "d", "e", "f", "g", "h", "i",
+        "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u",
+        "v", "w", "x", "w", "z"};
+        
+        for(int i=0; i<=25; i++){
+            if(nota.contains(letras[i]) || nota.contains(letras[i].toUpperCase()))
+                return false;
+        }
+        return true;
+    }
+    
+    public boolean validar1a10(float nota){
+        return nota >= 0 && nota <= 10;
+    }
+    
+    public boolean validarVirgula(String nota){
+        return nota.contains(",");
     }
 
     @SuppressWarnings("unchecked")
@@ -168,8 +191,8 @@ public class Alunos extends javax.swing.JFrame {
     }//GEN-LAST:event_nota4ActionPerformed
 
     private void botaoCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCalcularActionPerformed
-        String nomeprograma = nome.getText();
-        String salaprograma = sala.getText();
+        String nomeprog = nome.getText();
+        String salaprog = sala.getText();
         String nota1s = nota1.getText();
         String nota2s = nota2.getText();
         String nota3s = nota3.getText();
@@ -177,35 +200,38 @@ public class Alunos extends javax.swing.JFrame {
         
         GuardaAluno aluno = new GuardaAluno();
         
-        if(nomeprograma.trim().isEmpty() || salaprograma.trim().isEmpty() || nota1s.trim().isEmpty() || nota2s.trim().isEmpty() || nota3s.trim().isEmpty() || nota4s.trim().isEmpty()){
+        if(validarVazio(nomeprog) || validarVazio(salaprog) || validarVazio(nota1s) || validarVazio(nota2s) || validarVazio(nota3s)|| validarVazio(nota4s)){
             JOptionPane.showMessageDialog(rootPane, "Por favor, preencha todos os campos.");
         }else{
-            
-            Float nota1programa = Float.parseFloat(nota1s);
-            Float nota2programa = Float.parseFloat(nota2s);
-            Float nota3programa = Float.parseFloat(nota3s);
-            Float nota4programa = Float.parseFloat(nota4s);
-            
-            if(nota1programa.isNaN() || nota2programa.isNaN() || nota3programa.isNaN() || nota4programa.isNaN()){
-                JOptionPane.showMessageDialog(rootPane, "Por favor, insira um número.");
-            }else if((nota1programa >= 0 && nota1programa <= 10) && (nota2programa >= 0 && nota2programa <= 10) && (nota3programa >= 0 && nota3programa <= 10) && (nota4programa >= 0 && nota4programa <= 10)){
-                
-                aluno.setNome(nomeprograma);
-                aluno.setSala(salaprograma);
-                aluno.setNota1(nota1programa);
-                aluno.setNota2(nota2programa);
-                aluno.setNota3(nota3programa);
-                aluno.setNota4(nota4programa);
+            if(validarNumeros(nota1s) && validarNumeros(nota2s) && validarNumeros(nota3s) && validarNumeros(nota4s)){
+                if(validarVirgula(nota1s) || validarVirgula(nota2s) || validarVirgula(nota3s) || validarVirgula(nota4s)){
+                    JOptionPane.showMessageDialog(rootPane, "Por favor, separe as casas decimais por ponto(.).");
+                }else{
+                    Float nota1prog = Float.parseFloat(nota1s);
+                    Float nota2prog = Float.parseFloat(nota2s);
+                    float nota3prog = Float.parseFloat(nota3s);
+                    float nota4prog = Float.parseFloat(nota4s);
+                    
+                    if(validar1a10(nota1prog) && validar1a10(nota2prog) && validar1a10(nota3prog) && validar1a10(nota4prog)){
+                   
+                        aluno.setNome(nomeprog);
+                        aluno.setSala(salaprog);
+                        aluno.setNota1(nota1prog);
+                        aluno.setNota2(nota2prog);
+                        aluno.setNota3(nota3prog);
+                        aluno.setNota4(nota4prog);
 
-                home.setGa(aluno);
-                home.setVisible(true);
-                this.dispose(); 
-                
-                JOptionPane.showMessageDialog(null, "Aluno inserido com sucesso");
-                
-                }else
-                    JOptionPane.showMessageDialog(null,"Insira notas entre 0 e 10");
-            }
+                        home.setGa(aluno);
+                        home.setVisible(true);
+                        this.dispose(); 
+
+                        JOptionPane.showMessageDialog(null, "Aluno inserido com sucesso");
+                    }else
+                        JOptionPane.showMessageDialog(null,"Insira notas entre 0 e 10");
+                }
+            }else
+                JOptionPane.showMessageDialog(rootPane, "Por favor, insira um número válido.");
+        }
     }//GEN-LAST:event_botaoCalcularActionPerformed
 
     private void nota2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nota2ActionPerformed
